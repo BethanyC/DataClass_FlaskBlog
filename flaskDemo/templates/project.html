@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <h3 class="mr-2 h4">Project: {{ project.pnumber }}</h3>
+        <h4 class="mr-2 h4">{{ project.pname }}</h4>  <br/>
+        <small class="text-muted h5">Employees</small> <br/>
+        <table class="table">
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th> 
+          </tr>
+        {% for row in results %}
+          <tr>
+            <th>{{ row.fname }}</th>
+            <th>{{ row.lname }}</th> 
+          </tr>
+        {% endfor %}
+        </table>
+         <br/> <br/>
+          <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('add_employee', pnumber=project.pnumber) }}">Add Employees</a>
+            <a class="btn btn-secondary btn-sm btn-danger mt-1 mb-1" href="{{ url_for('remove_employee', pnumber=project.pnumber) }}">Remove Employees</a>
+          </div>
+      </div>
+    </div>
+  </article>
+{% endblock content %}
