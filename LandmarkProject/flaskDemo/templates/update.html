@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+{% block content %}
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+        <h4>Add a Favorite</h4>
+        <form method="POST" action="">
+            {{ form1.hidden_tag() }}
+            <fieldset class="form-group">
+              <legend class="mb-4">{{ legend }}</legend>
+              <div class="form-group">
+                {{ form1.landmark.label(class="form-control-label") }}
+                {% if form1.landmark.errors %}
+                {{ form1.landmark(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form1.landmark.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form1.landmark(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group" style="width:3%;">
+                {{ form1.visited.label(class="form-control-label") }}
+                {% if form1.visited.errors %}
+                {{ form1.visited(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form1.visited.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form1.visited(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+          {{ form1.submit1(class="btn btn-outline-info") }}
+      </div>
+  </form>
+  <h4>Visited? Update your list!</h4>
+  <form method="POST" action="">
+    {{ form2.hidden_tag() }}
+    <fieldset class="form-group">
+      <legend class="mb-4">{{ legend }}</legend>
+      <div class="form-group">
+        {{ form2.landmark.label(class="form-control-label") }}
+        {% if form2.landmark.errors %}
+        {{ form2.landmark(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+            {% for error in form2.landmark.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ form2.landmark(class="form-control form-control-lg") }}
+        {% endif %}
+    </div>
+    <div class="form-group" style="width:3%;">
+        {{ form2.visited.label(class="form-control-label") }}
+        {% if form2.visited.errors %}
+        {{ form2.visited(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+            {% for error in form2.visited.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ form2.visited(class="form-control form-control-lg") }}
+        {% endif %}
+    </div>
+</fieldset>
+<div class="form-group">
+  {{ form2.submit2(class="btn btn-outline-info") }}
+</div>
+</form>
+<h4>Delete a Favorite</h4>
+<form method="POST" action="">
+    {{ form3.hidden_tag() }}
+    <fieldset class="form-group">
+      <legend class="mb-4">{{ legend }}</legend>
+      <div class="form-group">
+        {{ form3.landmark.label(class="form-control-label") }}
+        {% if form3.landmark.errors %}
+        {{ form3.landmark(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+            {% for error in form3.landmark.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ form3.landmark(class="form-control form-control-lg") }}
+        {% endif %}
+    </div>
+</fieldset>
+<div class="form-group">
+  {{ form3.submit3(class="btn btn-outline-info") }}
+</div>
+</form>
+</div>
+</div>
+</article>
+{% endblock content %}
