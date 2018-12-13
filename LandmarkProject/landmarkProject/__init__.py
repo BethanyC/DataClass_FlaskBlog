@@ -18,12 +18,12 @@ login_manager.login_message_category = 'info'
 try:
     conn = mysql.connector.connect(host='localhost',
                                    database='chicago_landmarks',
-                                   user='',
-                                   password='')
+                                   user='<username>',
+                                   password='<password>')
 except Error as e:
     print(e)
 
-from flaskDemo import routes
-from flaskDemo import models
+from landmarkProject import routes
+from landmarkProject import models
 
 models.db.create_all()

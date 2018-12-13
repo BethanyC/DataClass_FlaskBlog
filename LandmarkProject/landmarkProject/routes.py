@@ -2,9 +2,9 @@ import os
 import secrets
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request, abort
-from flaskDemo import app, db, bcrypt, conn
-from flaskDemo.forms import RegistrationForm, LoginForm, UpdateAccountForm, HomeForm, HomeForm2, AddFavForm, AddFavForm2, DeleteFavForm, UpdateFavForm
-from flaskDemo.models import User, Landmarks, Favorites, Neighborhoods
+from landmarkProject import app, db, bcrypt, conn
+from landmarkProject.forms import RegistrationForm, LoginForm, UpdateAccountForm, HomeForm, HomeForm2, AddFavForm, AddFavForm2, DeleteFavForm, UpdateFavForm
+from landmarkProject.models import User, Landmarks, Favorites, Neighborhoods
 from flask_login import login_user, current_user, logout_user, login_required
 import mysql.connector
 

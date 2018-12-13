@@ -1,0 +1,441 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Dec 10, 2018 at 03:53 AM
+-- Server version: 10.1.35-MariaDB
+-- PHP Version: 7.2.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `chicago_landmarks`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `favorites`
+--
+
+CREATE TABLE `favorites` (
+  `user_id` int(11) NOT NULL,
+  `landmark_id` int(11) NOT NULL,
+  `visited` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `favorites`
+--
+
+INSERT INTO `favorites` (`user_id`, `landmark_id`, `visited`) VALUES
+(2, 2, 1),
+(2, 6, 1),
+(2, 8, 1),
+(2, 13, 1),
+(2, 19, 0),
+(3, 7, 1),
+(3, 20, 0),
+(4, 3, 0),
+(4, 13, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `landmarks`
+--
+
+CREATE TABLE `landmarks` (
+  `id` int(2) NOT NULL,
+  `name` varchar(49) DEFAULT NULL,
+  `address` varchar(49) DEFAULT NULL,
+  `date_built` varchar(9) DEFAULT NULL,
+  `architect` varchar(50) DEFAULT NULL,
+  `landmark_designation_date` varchar(10) DEFAULT NULL,
+  `neighborhood` varchar(31) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `landmarks`
+--
+
+INSERT INTO `landmarks` (`id`, `name`, `address`, `date_built`, `architect`, `landmark_designation_date`, `neighborhood`) VALUES
+(1, '(Former) Pioneer Trust and Savings Bank Building', '4000 W. North Ave.', '1924', 'Karl M. Vitzthum', '6/6/2012', 'Hermosa'),
+(2, 'Riviera Motor Sales Company Building', '5948-60 N. Broadway', '1925-26', 'R. Bernard Kurzon', '6/6/2012', 'Edgewater Glen'),
+(3, 'Wrigley Building', '400-410 North Michigan Avenue', '1921', 'Graham, Anderson, Probst and White', '5/9/2012', 'Near North Side'),
+(4, '(Former) Sheridan Trust and Savings Bank Building', '4753 N Broadway', '1924-28', 'Marshall & Fox, Huszagh & Hill', '10/8/2008', 'Uptown'),
+(5, 'Chicago & North Western Railway Powerhouse', '211 N Clinton St', '1909-11', 'Frost & Granger', '1/11/2006', 'Fulton River District'),
+(6, 'Haskell-Barker-Atwater Buildings', '18-28 S Wabash Av', '1875-77', 'Wheelock & Thomas and John M. Van Osdel', '11/13/1996', 'South Loop'),
+(7, 'F. R. Schock House', '5804 W Midway Park', '1886', 'Frederick Schock', '1/20/1999', 'Austin'),
+(8, 'Site of the Sauganash Hotel/Wigwam', 'SE corner of Lake St & Wacker Dr', '1831', NULL, '11/6/2002', 'Chicago Loop'),
+(9, 'Abraham Lincoln Monument (\"Standing Lincoln\")', 'Lincoln Park at Dearborn Parkway', '1887', 'A Saint-Gaudens,Sculptor & S White,Architect', '12/12/2001', 'Gold Coast'),
+(10, 'Humboldt Park Boathouse Pavilion', '1301 N Humboldt Blvd', '1907', 'Richard E. Schmidt,Garden & Martin w/ Jens Jenson', '11/13/1996', 'Humboldt Park'),
+(11, 'Jane Addams\' Hull House and Dining Hall', '800 S Halsted St', '1856', 'Unknown, Dining Hall 1905: Pond & Pond', '6/12/1974', 'University Village/Little Italy'),
+(12, 'Drake Fountain', '92nd St @ South Chicago & Exchange Ave', '1892', 'Richard Henry Park', '3/10/2004', 'South Chicago'),
+(13, 'Chicago Theater', '175 N State St', '1921', 'Rapp and Rapp', '1/28/1983', 'Chicago Loop'),
+(14, 'Mundelein College Skyscraper Building', '1020 W Sheridan Rd', '1930-31', 'Joseph W McCarthy', '12/13/2006', 'Rogers Park'),
+(15, 'Frederick C. Robie House', '5757 S Woodlawn Av', '1909', 'Frank Llyod Wright', '9/15/1971', 'Hyde Park'),
+(16, 'On Leong Merchants Association', '2216 S Wentworth Av', '1926-27', 'Michealsen & Rognstad', '12/1/1993', 'Chinatown'),
+(17, 'Fisher Studio Houses', '1209 N State Pkwy', '1936', 'Andrew Rebori & Edgar Miller', '7/31/1996', 'Gold Coast'),
+(18, 'Home Bank & Trust Company', '1200-08 N Ashland Av / 1600-12 W Division St', '', 'Karl M. Vitzthum', '2/6/2008', 'Wicker Park'),
+(19, 'Reliance Building', '32 N State St', '1890', 'base:Burham & Root Upper Stor: D.H. Burnham and Co', '7/11/1975', 'Chicago Loop'),
+(20, 'Waller Apartments', '2840-58 W Walnut St', '1895', 'Frank Llyod Wright', '3/2/1994', 'East Garfield Park'),
+(21, '(Former) Engine Company 104, Truck 3', '1401 S Michigan Av', '1905', 'Charles F. Hermann', '10/1/2003', 'South Loop'),
+(22, 'Farwell Building', '664 N Michigan Ave', '1927', 'Philip B. Maher', '3/10/2004', 'Near North Side'),
+(23, 'Soldiers\' Home', '739 E 35th St', '1864-1923', 'William W. Boyington (1866 sect)', '4/16/1996', 'Groveland Park'),
+(24, 'Wheeler-Kohn House', '2016-20 S Calumet Av', '1870', 'Otis L. Wheelock', '2/5/1998', 'South Loop'),
+(25, 'Tree Studios, Annexes and Courtyard', '601-23 N State St/4-10 E Ohio St/3-7 E Ontario St', '1894', 'Parfitt Brothers, with Bauer & Hill', '2/26/1997', 'Near North Side'),
+(26, 'Reebie Storage Warehouse', '2325-33 N Clark St', '1921-22', 'George Kingsley', '9/1/1999', 'Mid-North District'),
+(27, 'South Side Community Art Center', '3831 S Michigan Av', '1892-93', 'Gustav Hallburg remod:1940;Hin Bredendieck&Lerner', '6/16/1994', 'Grand Boulevard'),
+(28, 'Brooks Building', '233 W Jackson Blvd', '1910', 'Holabird & Roche', '1/14/1997', 'Chicago Loop');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `neighborhoods`
+--
+
+CREATE TABLE `neighborhoods` (
+  `neighborhood` varchar(35) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `neighborhoods`
+--
+
+INSERT INTO `neighborhoods` (`neighborhood`) VALUES
+('Albany Park'),
+('Altgeld Gardens'),
+('Andersonville'),
+('Archer Heights'),
+('Armour Square'),
+('Ashburn'),
+('Ashburn Estates'),
+('Auburn Gresham'),
+('Avalon Park'),
+('Avondale'),
+('Avondale Gardens'),
+('Back of the Yards'),
+('Belmont Central'),
+('Belmont Gardens'),
+('Belmont Heights'),
+('Belmont Terrace'),
+('Beverly'),
+('Beverly View'),
+('Beverly Woods'),
+('Big Oaks'),
+('Bowmanville'),
+('Boystown'),
+('Brainerd'),
+('Brickyard'),
+('Bridgeport'),
+('Brighton Park'),
+('Bronzeville'),
+('Bucktown'),
+('Budlong Woods'),
+('Buena Park'),
+('Burnside'),
+('Cabrini?Green'),
+('Calumet Heights'),
+('Canaryville'),
+('Central Station'),
+('Chatham'),
+('Chicago Lawn'),
+('Chinatown'),
+('Chrysler Village'),
+('Clarendon Park'),
+('Clearing East'),
+('Clearing West'),
+('Cottage Grove Heights'),
+('Cragin'),
+('Crestline'),
+('Dearborn Homes'),
+('Dearborn Park'),
+('Douglas Park'),
+('Dunning'),
+('East Beverly'),
+('East Chatham'),
+('East Garfield Park'),
+('East Hyde Park'),
+('East Pilsen'),
+('East Side'),
+('East Village'),
+('Eden Green'),
+('Edgebrook'),
+('Edgewater'),
+('Edgewater Beach'),
+('Edgewater Glen'),
+('Edison Park'),
+('Englewood'),
+('Fernwood'),
+('Fifth City'),
+('Ford City'),
+('Forest Glen'),
+('Fuller Park'),
+('Fulton River District'),
+('Gage Park'),
+('Galewood'),
+('Garfield Ridge'),
+('Gladstone Park'),
+('Gold Coast'),
+('Golden Gate'),
+('Goose Island'),
+('Graceland West'),
+('Grand Boulevard'),
+('Grand Crossing'),
+('Greater Grand Crossing'),
+('Greektown'),
+('Gresham'),
+('Groveland Park'),
+('Hamilton Park'),
+('Hanson Park'),
+('Heart of Chicago'),
+('Hegewisch'),
+('Hermosa'),
+('Hollywood Park'),
+('Homan Square'),
+('Humboldt Park'),
+('Hyde Park'),
+('Illinois Medical District'),
+('Irving Park'),
+('Irving Woods'),
+('Jackowo'),
+('Jackson Park Highlands'),
+('Jefferson Park'),
+('K-Town'),
+('Kelvyn Park'),
+('Kennedy Park'),
+('Kensington'),
+('Kenwood'),
+('Kilbourn Park'),
+('Kosciuszko Park'),
+('Lake Meadows'),
+('Lake View'),
+('Lake View East'),
+('Lakewood / Balmoral'),
+('LeClaire Courts'),
+('Legends South?(Robert Taylor Homes)'),
+('Lilydale'),
+('Lincoln Park'),
+('Lincoln Square'),
+('Lithuanian Plaza'),
+('Little Italy'),
+('Little Village'),
+('Logan Square'),
+('Longwood Manor'),
+('Lower West Side'),
+('Loyola'),
+('Magnificent Mile'),
+('Margate Park'),
+('Marquette Park'),
+('Marshall Square'),
+('Marynook'),
+('Mayfair'),
+('McKinley Park'),
+('Merchant Park'),
+('Montclare'),
+('Morgan Park'),
+('Mount Greenwood'),
+('Museum Campus'),
+('Near East Side'),
+('Near North Side'),
+('Near West Side'),
+('New Chinatown'),
+('New City'),
+('Noble Square'),
+('North Austin'),
+('North Center'),
+('North Halsted'),
+('North Kenwood'),
+('North Lawndale'),
+('North Mayfair'),
+('North Park'),
+('Nortown'),
+('Norwood Park East'),
+('Norwood Park West'),
+('O\'Hare'),
+('Oakland'),
+('Old Edgebrook'),
+('Old Irving Park'),
+('Old Norwood'),
+('Old Town'),
+('Old Town Triangle'),
+('Oriole Park'),
+('Palmer Square'),
+('Park Manor'),
+('Park West'),
+('Parkview'),
+('Peterson Park'),
+('Pill Hill'),
+('Pilsen'),
+('Polish Downtown'),
+('Polish Village'),
+('Portage Park'),
+('Prairie Avenue Historic District'),
+('Prairie Shores'),
+('Princeton Park'),
+('Printer\'s Row'),
+('Pulaski Park'),
+('Pullman'),
+('Ranch Triangle'),
+('Ravenswood'),
+('Ravenswood Gardens'),
+('Ravenswood Manor'),
+('River North'),
+('River West'),
+('River\'s Edge'),
+('Riverdale'),
+('Rogers Park'),
+('Roscoe Village'),
+('Rosehill'),
+('Roseland'),
+('Rosemoor'),
+('Saint Ben\'s'),
+('Sauganash'),
+('Schorsch Forest View'),
+('Schorsch Village'),
+('Scottsdale'),
+('Sheffield Neighbors'),
+('Sheridan Park'),
+('Sheridan Station Corridor'),
+('Sleepy Hollow'),
+('Smith Park'),
+('South Austin'),
+('South Chicago'),
+('South Commons'),
+('South Deering'),
+('South East Ravenswood'),
+('South Edgebrook'),
+('South Lawndale'),
+('South Loop'),
+('South Shore'),
+('Stateway Gardens'),
+('Stony Island Park'),
+('Streeterville'),
+('Talley\'s Corner'),
+('The Gap'),
+('The Island'),
+('The Loop'),
+('The Villa'),
+('Tri-Taylor'),
+('Ukrainian Village'),
+('Union Ridge'),
+('University Village'),
+('Uptown'),
+('Vittum Park'),
+('Wac?awowo'),
+('Washington Heights'),
+('Washington Park'),
+('Wentworth Gardens'),
+('West Beverly'),
+('West Chatham'),
+('West Chesterfield'),
+('West DePaul'),
+('West Elsdon'),
+('West Englewood'),
+('West Garfield Park'),
+('West Humboldt Park'),
+('West Lakeview'),
+('West Lawn'),
+('West Loop'),
+('West Morgan Park'),
+('West Pullman'),
+('West Ridge'),
+('West Rogers Park'),
+('West Town'),
+('West Woodlawn'),
+('Wicker Park'),
+('Wildwood'),
+('Woodlawn'),
+('Wrightwood'),
+('Wrightwood Neighbors'),
+('Wrigleyville');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `username` text NOT NULL,
+  `email` text NOT NULL,
+  `password` text NOT NULL,
+  `neighborhood` text NOT NULL,
+  `image_file` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `neighborhood`, `image_file`) VALUES
+(2, 'Bethany', 'test@2.com', '$2b$12$tepC2KuYg496HXUVktQLY.tkkW3I23IFeUBfNV68bRJaO5vIBcfOe', 'test-2', '10c7753e43d3f9d8.jpg'),
+(3, 'test3', 'test@3.com', '$2b$12$Y/QPpBCEAosuOqPfxECf3.hnNCCE8jgZeCIRpT/UhvljriXMOIjYC', 'Beverly', 'default.jpg'),
+(4, 'guest1', 'email@place.com', '$2b$12$IguVSzhbSQQQpIGmOSYuz.yDOLMu8.D.rmDqKmQvtrCYNO7GziBvu', 'Lincoln Square', 'default.jpg');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `favorites`
+--
+ALTER TABLE `favorites`
+  ADD PRIMARY KEY (`user_id`,`landmark_id`),
+  ADD KEY `landmark id` (`landmark_id`);
+
+--
+-- Indexes for table `landmarks`
+--
+ALTER TABLE `landmarks`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `neighborhoods`
+--
+ALTER TABLE `neighborhoods`
+  ADD PRIMARY KEY (`neighborhood`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `favorites`
+--
+ALTER TABLE `favorites`
+  ADD CONSTRAINT `landmark id` FOREIGN KEY (`landmark_id`) REFERENCES `landmarks` (`id`),
+  ADD CONSTRAINT `user id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

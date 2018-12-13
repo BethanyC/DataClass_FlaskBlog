@@ -4,8 +4,8 @@ from flask_login import current_user
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, IntegerField, DateField, SelectField, HiddenField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError,Regexp
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
-from flaskDemo import db, conn
-from flaskDemo.models import User, Landmarks, Neighborhoods, Favorites
+from landmarkProject import db, conn
+from landmarkProject.models import User, Landmarks, Neighborhoods, Favorites
 import mysql.connector
 from sqlalchemy import not_
 
@@ -94,7 +94,7 @@ class HomeForm2(FlaskForm):
     submit2 = SubmitField('Explore!')
 
 def add_query():
-    return Landmarks.query.filter(not_(Landmarks.id.in_(Favorites.query.filter_by(user_id=2).with_entities(Favorites.landmark_id).all()))).all()
+    return Landmarks.query.filter(not_(Landmarks.id.in_(Favorites.query.filter_by(user_id=current_user.id).with_entities(Favorites.landmark_id).all()))).all()
 
 def delete_query():
     return Favorites.query.filter_by(user_id=current_user.id) \

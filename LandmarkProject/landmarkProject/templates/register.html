@@ -1,21 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="content-section">
-<script>
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(savePosition);
-    } else {
-        console.log("Geolocation is not supported by this browser.");
-    }
-}
-
-function savePosition(position) {
-    localStorage.setItem("Latitude", position.coords.latitude)
-    localStorage.setItem("Longitude", position.coords.longitude)
-};
-getLocation()
-</script>
     <form method="POST" action="">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">

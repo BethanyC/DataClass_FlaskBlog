@@ -1,4 +1,4 @@
-from flaskDemo import db, login_manager
+from landmarkProject import db, login_manager
 from flask_login import UserMixin
 
 db.Model.metadata.reflect(db.engine)
