@@ -4,39 +4,69 @@
   <div class="media-body">
     <div class="article-metadata">
       <form method="POST" action="">
-        {{ form.hidden_tag() }}
+        {{ form1.hidden_tag() }}
         <fieldset class="form-group">
           <legend class="mb-4">{{ legend }}</legend>
           <div class="form-group">
-            <h3>{{ form.neighborhood.label(class="form-control-label") }}</h3>
-            {% if form.neighborhood.errors %}
-            {{ form.neighborhood(class="form-control form-control-lg is-invalid") }}
+            <h3>{{ form1.neighborhood.label(class="form-control-label") }}</h3>
+            {% if form1.neighborhood.errors %}
+            {{ form1.neighborhood(class="form-control form-control-lg is-invalid") }}
             <div class="invalid-feedback">
-              {% for error in form.neighborhood.errors %}
+              {% for error in form1.neighborhood.errors %}
               <span>{{ error }}</span>
               {% endfor %}
             </div>
             {% else %}
-            {{ form.neighborhood(class="form-control form-control-lg") }}
+            {{ form1.neighborhood(class="form-control form-control-lg") }}
             {% endif %}
           </div>
         </fieldset>
         <div class="form-group">
-          {{ form.submit(class="btn btn-outline-info") }}
+          {{ form1.submit1(class="btn btn-outline-info") }}
         </div>
-        {% if neighborhood %}
-        <h4>Places to visit:</h4>
-        {% for landmark in neighborhood %}
-        <h5>{{ landmark.name }}</h5>
-        <p>Address: {{ landmark.address }}</p>
-        <p>Date built: {{ landmark.date_built }}</p>
-        <p>Architect: {{ landmark.architect }}</p>
-        <p>Designation date: {{ landmark.landmark_designation_date }}</p></br>
-        {% endfor %}
-        {% endif %}
-        <div><p style="margin-bottom:3px"><a href="https://data.cityofchicago.org/Historic-Preservation/Individual-Landmarks-Map/habu-n236" target="_blank" style="font-size:12px;font-weight:bold;text-decoration:none;color:#333333;font-family:arial;">Individual Landmarks - Map</a></p><iframe width="680px" title="Individual Landmarks - Map" height="425px" src="https://data.cityofchicago.org/w/habu-n236/3q3f-6823?cur=7hR6v6FhBeO&from=root" frameborder="0"scrolling="no"><a href="https://data.cityofchicago.org/Historic-Preservation/Individual-Landmarks-Map/habu-n236" title="Individual Landmarks - Map" target="_blank">Individual Landmarks - Map</a></iframe><p><a href="http://www.socrata.com/" target="_blank">Powered by Socrata</a></p>
+      </form>
+      <form method="POST" action="">
+        {{ form2.hidden_tag() }}
+        <fieldset class="form-group">
+          <legend class="mb-4">{{ legend }}</legend>
+          <div class="form-group">
+            <h3>{{ form2.architect.label(class="form-control-label") }}</h3>
+            {% if form2.architect.errors %}
+            {{ form2.architect(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form2.architect.errors %}
+              <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+            {% else %}
+            {{ form2.architect(class="form-control form-control-lg") }}
+            {% endif %}
+          </div>
+        </fieldset>
+        <div class="form-group">
+          {{ form2.submit2(class="btn btn-outline-info") }}
         </div>
+      </form>
+      {% if neighborhood %}
+      <h4>Places to visit:</h4>
+      {% for landmark in neighborhood %}
+      <h5><a href="{{ url_for('landmark', landmark_id=landmark.id) }}">{{ landmark.name }}</a></h5>
+      <p>Address: {{ landmark.address }}</p>
+      <p>Date built: {{ landmark.date_built }}</p>
+      <p>Architect: {{ landmark.architect }}</p>
+      <p>Designation date: {{ landmark.landmark_designation_date }}</p>
+      {% if landmark.count == 1 %}
+      <p class='text-left text-success' style='font-size: small; font-style: italic;'>{{ landmark.count }} person saved this landmark!</p></br>
+      {% elif landmark.count != 0 %}
+      <p class='text-left text-success' style='font-size: small; font-style: italic;'>{{ landmark.count }} people saved this landmark!</p></br>
+      {% elif landmark.count == 0 %}
+      </br>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+      <div><p style="margin-bottom:3px"><a href="https://data.cityofchicago.org/Historic-Preservation/Individual-Landmarks-Map/habu-n236" target="_blank" style="font-size:12px;font-weight:bold;text-decoration:none;color:#333333;font-family:arial;">Individual Landmarks - Map</a></p><iframe width="680px" title="Individual Landmarks - Map" height="425px" src="https://data.cityofchicago.org/w/habu-n236/3q3f-6823?cur=7hR6v6FhBeO&from=root" frameborder="0"scrolling="no"><a href="https://data.cityofchicago.org/Historic-Preservation/Individual-Landmarks-Map/habu-n236" title="Individual Landmarks - Map" target="_blank">Individual Landmarks - Map</a></iframe><p><a href="http://www.socrata.com/" target="_blank">Powered by Socrata</a></p>
       </div>
     </div>
-  </article>
-  {% endblock content %}
+  </div>
+</article>
+{% endblock content %}

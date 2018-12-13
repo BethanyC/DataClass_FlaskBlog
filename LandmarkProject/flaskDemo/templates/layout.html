@@ -58,6 +58,7 @@
         <div class="content-section">
           <img class="rounded-circle account-img" src="{{ image_file }}">
           <h3>{{ name }}</h3>
+          <h4>{{ num_favs }} saved landmarks</h4>
           <p class='text-muted'>My favorite landmarks:
             <h5>Visited!</h5>
             <ul class="list-group">
@@ -85,7 +86,7 @@
     {% else %}
     <div class="col-md-4">
       <div class="content-section">
-        <p>Create and account or login to track your journey!</p>
+        <p>Create and account or login to track your visits!</p>
       </div>
     </div>
     {% endif %}

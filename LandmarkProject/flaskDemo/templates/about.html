@@ -4,6 +4,16 @@
 	<div class="media-body">
 		<h3>About Page</h3>
 		<p>Use the city of Chicago's landmark map to explore your city. Keep track of what you've visted and what you want to visit in your account. Data for this project was taken from <a href=https://data.cityofchicago.org/Historic-Preservation/Individual-Landmarks-Map/habu-n236>cityofchicago.org</a></p>
+		<p>Landmarks include: </p>
+		{% for landmark in landmarks %}
+		  <p>{{ landmark['name']}}
+		  	{% if landmark['count'] == 1 %}
+		  	  <span class='text-left text-success' style='font-size: small; font-style: italic;'>{{ landmark['count'] }} person saved this landmark!</span>
+		  	{% elif landmark['count'] != 0 %}
+		  	  <span class='text-left text-success' style='font-size: small; font-style: italic;'>{{ landmark['count'] }} people saved this landmark!</span>
+		  	{% endif %}
+		  </p>
+		{% endfor %}
 	</div>
 </article>
 {% endblock content %}

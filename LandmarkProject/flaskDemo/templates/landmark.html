@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+        <h4>{{ landmark.name }}</h4>
+        <p>Address: {{ landmark.address }}</p>
+        <p>Date built: {{ landmark.date_built }}</p>
+        <p>Architect: {{ landmark.architect }}</p>
+        <p>Designation date: {{ landmark.landmark_designation_date }}</p>
+        {% if current_user.is_authenticated and (landmark_string not in already_saved) %}
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+            <div class="form-group" style="width:3%;">
+                {{ form.visited.label(class="form-control-label") }}
+                {% if form.visited.errors %}
+                {{ form.visited(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.visited.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.visited(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+          {{ form.submit(class="btn btn-outline-info") }}
+      </div>
+  </form>
+  {% endif %}
+</div>
+</div>
+</article>
+{% endblock content %}
